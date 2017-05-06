@@ -135,6 +135,29 @@ function createHistory (state, ignoreInitialState) {
   }
 }
 
+function linearizeHistory (history) {
+  const { past, future, present } = history;
+
+  if (future.length === 0) {
+    return history;
+  }
+
+  const newPast = [
+    ...past,
+    present,
+    ...future.slice(0, future.length - 1),
+    ...future.reverse()
+  ];
+
+  const newHistory = {
+    ...history,
+    past: newPast,
+    future: []
+  };
+
+  return newHistory;
+}
+
 // helper to dynamically match in the reducer's switch-case
 function actionTypeAmongClearHistoryType (actionType, clearHistoryType) {
   return clearHistoryType.indexOf(actionType) > -1 ? actionType : !actionType
@@ -158,7 +181,8 @@ export default function undoable (reducer, rawConfig = {}) {
       ? rawConfig.clearHistoryType
       : [rawConfig.clearHistoryType || ActionTypes.CLEAR_HISTORY],
     neverSkipReducer: rawConfig.neverSkipReducer || false,
-    ignoreInitialState: rawConfig.ignoreInitialState || false
+    ignoreInitialState: rawConfig.ignoreInitialState || false,
+    linearizeHistory: rawConfig.linearizeHistory || false
   }
 
   return (state = config.history, action = {}, ...slices) => {
@@ -246,6 +270,10 @@ export default function undoable (reducer, rawConfig = {}) {
           debug.log('reset history due to init action')
           debug.end(config.history)
           return config.history
+        }
+
+        if (config.linearizeHistory) {
+          history = linearizeHistory(history);
         }
 
         if (history.present === res) {

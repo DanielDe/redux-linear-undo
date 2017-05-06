@@ -1,7 +1,7 @@
 {
-  "name": "redux-undo",
-  "version": "1.0.0-beta9-8",
-  "description": "simple undo/redo functionality for redux state containers",
+  "name": "redux-linear-undo",
+  "version": "1.0.2",
+  "description": "adds option to redux-undo to linearize undo history",
   "main": "lib/index.js",
   "typings": "typings.d.ts",
   "jspm": {
