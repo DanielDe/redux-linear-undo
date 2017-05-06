@@ -1,6 +1,6 @@
 {
   "name": "redux-linear-undo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "adds option to redux-undo to linearize undo history",
   "main": "lib/index.js",
   "typings": "typings.d.ts",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/omnidan/redux-undo.git"
+    "url": "https://github.com/DanielDe/redux-linear-undo.git"
   },
   "keywords": [
     "redux",
@@ -40,12 +40,12 @@
     "flux",
     "time travel"
   ],
-  "author": "Daniel Bugl <me@omnidan.net> (https://github.com/omnidan)",
+  "author": "Daniel de Haas <daniel.andrew.dehaas@gmail.com> (https://github.com/DanielDe)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/omnidan/redux-undo/issues"
+    "url": "https://github.com/DanielDe/redux-linear-undo/issues"
   },
-  "homepage": "https://github.com/omnidan/redux-undo",
+  "homepage": "https://github.com/DanielDe/redux-linear-undo",
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
