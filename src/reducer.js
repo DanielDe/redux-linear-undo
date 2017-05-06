@@ -136,10 +136,10 @@ function createHistory (state, ignoreInitialState) {
 }
 
 function linearizeHistory (history) {
-  const { past, future, present } = history;
+  const { past, future, present } = history
 
   if (future.length === 0) {
-    return history;
+    return history
   }
 
   const newPast = [
@@ -147,15 +147,13 @@ function linearizeHistory (history) {
     present,
     ...future.slice(0, future.length - 1),
     ...future.reverse()
-  ];
+  ]
 
-  const newHistory = {
+  return {
     ...history,
     past: newPast,
     future: []
-  };
-
-  return newHistory;
+  }
 }
 
 // helper to dynamically match in the reducer's switch-case
@@ -273,7 +271,7 @@ export default function undoable (reducer, rawConfig = {}) {
         }
 
         if (config.linearizeHistory) {
-          history = linearizeHistory(history);
+          history = linearizeHistory(history)
         }
 
         if (history.present === res) {
