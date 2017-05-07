@@ -41,3 +41,9 @@ combineReducers({
   counter: undoable(counter, { linearizeHistory: true })
 });
 ```
+
+# Todo list
+
+* Honor the `limit` config option
+* Allow filtering of actions that trigger a linearization of history
+* Add tests :)
